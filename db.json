@@ -1,0 +1,11 @@
+{
+    "Anime": [
+        {
+          "id": "1",
+          "title": "One piece",
+          "description": "A giant lizard terrorizes a rural Texas community and a heroic teenager attempts to destroy the creature.",
+          "video": "http://127.0.0.1:40061/video/1.webm",
+          "poster": ""
+        }
+    ] 
+}
