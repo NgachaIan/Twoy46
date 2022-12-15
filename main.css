@@ -1,0 +1,15 @@
+.Menu{
+    justify-self: left;
+}
+.nav-item{ 
+    display: inline;
+    padding: 4px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #fff;
+}
+
+.nav-item:hover{
+    background-color: rgba(0,0,0,0.05);
+}
