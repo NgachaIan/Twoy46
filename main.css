@@ -1,15 +1,45 @@
-.Menu{
-    justify-self: left;
-}
-.nav-item{ 
-    display: inline;
-    padding: 4px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    background-color: transparent;
-    color: #fff;
+#header_menu{
+    /* display: block; */
+    text-decoration: none;
 }
 
-.nav-item:hover{
-    background-color: rgba(0,0,0,0.05);
+.nav-item {
+    display: inline;
+    /* position: relative; left: 335px; top: auto; */
+    margin: 7px;
+    padding: 10px;
+    text-decoration: none;
+    
+}
+
+li a{
+    text-decoration: none;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    font-weight: lighter;
+}
+
+a.nav-item:hover {
+    background-color: rgba(12, 145, 145, 0.212);
+    text-decoration: double;
+    cursor: pointer;
+    font-size: 22px;
+    border-radius: 4px;
+    
+}
+
+body{
+background-color: rgb(0, 0, 0);
+
+
+}
+
+.logo{
+    height: 50px;
+    margin-top: 20px;
+    /* margin-bottom: 20px;
+    margin-left: 20px; */
+    margin-right: 20px;
+    /* margin-top: 20px; */
 }
