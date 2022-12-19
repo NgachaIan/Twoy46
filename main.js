@@ -1,113 +1,390 @@
-let anime ={
-  "Anime": [
+//TMDB 
+
+const API_KEY = 'api_key=1cf50e6248dc270629e802686245c2c8';
+const BASE_URL = 'https://api.themoviedb.org/3';
+const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&'+API_KEY;
+const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+const searchURL = BASE_URL + '/search/movie?'+API_KEY;
+
+const genres = [
     {
-      "id": "1",
-      "title": "One piece",
-      "description": "One Piece Film: Red is the 15th One Piece movie, which was released on August 6, 2022. The film was first announced on November 21, 2021, in commemoration of Episode 1000's release.[2] Eiichiro Oda served as a general producer and supervisor for the film.",
-      "poster": "https://my-video-five.vercel.app/image/one%20piece%20red%20poster.jpg",
-      "video": "https://my-video-five.vercel.app/video/ONE%20PIECE%20FILM%20RED%20.mp4"
+      "id": 28,
+      "name": "Action"
     },
     {
-      "id": "2",
-      "title": "One punchman",
-      "description": "One-Punch Man (Japanese: ワンパンマン, Hepburn: Wanpanman) is a Japanese superhero manga series created by One. It tells the story of Saitama, a superhero who, because he can defeat any opponent with a single punch, grows bored from a lack of challenge. One wrote the original webcomic manga version in early 2009.",
-      "poster": "https://my-video-five.vercel.app/image/one%20punch%20man%20poster.jpg",
-      "video":"https://my-video-five.vercel.app/video/One%20Punch%20Man.mp4"
+      "id": 12,
+      "name": "Adventure"
     },
     {
-      "id": "3",
-      "title": "Hero Academia",
-      "description": "The series focuses on a middle school student Izuku Midoriya, who has no superpowers. Will he be able to become a hero and somehow to contribute to the peace and stability in the world, where the weak is the minority that needs to be defended.",
-      "poster": "https://my-video-five.vercel.app/image/Hero%20academia%20poster.jpg",
-      "video": "https://my-video-five.vercel.app/video/My%20Hero%20Academia.mp4"
+      "id": 16,
+      "name": "Animation"
     },
     {
-      "id": "4",
-      "title": "Chainsaw man",
-      "description": "Its chapters have been collected in 12 tankōbon volumes as of October 2022. Chainsaw Man follows the story of Denji, an impoverished young man who makes a contract that fuses his body with that of a dog-like devil named Pochita, granting him the ability to transform parts of his body into chainsaws.",
-      "poster": "https://my-video-five.vercel.app/image/chainsaw%20man%20poster.jpg",
-      "video": "https://my-video-five.vercel.app/video/Chainsaw%20Man.mp4"
+      "id": 35,
+      "name": "Comedy"
     },
     {
-      "id": "5",
-      "title": "Boruto",
-      "description": "Son of Naruto Uzumaki, Boruto, follows his father's footsteps along with his friends to become great ninja. Throughout all their adventures, Boruto is determined to make his mark in the ninja world and live outside of his father's shadow. Naruto was a young shinobi with an incorrigible knack for mischief.",
-      "poster":"https://my-video-five.vercel.app/image/boruto%20poster.jpg",
-      "video": "https://my-video-five.vercel.app/video/Boruto.mp4 "
+      "id": 80,
+      "name": "Crime"
     },
     {
-      "id": "6",
-      "title": "Demon Slayer",
-      "description": "Demon Slayer: Kimetsu no Yaiba (鬼滅の刃, Kimetsu no Yaiba, Blade of Demon Destruction is a Japanese manga series written and illustrated by Koyoharu Gotouge. It follows teenage Tanjiro Kamado, who strives to become a demon slayer after his family was slaughtered and his younger sister, Nezuko, turned into a demon.",
-      "poster": "https://my-video-five.vercel.app/image/Demon%20slayer%20poster.webp",
-      "video": "https://my-video-five.vercel.app/video/Demon%20Slayer.mp4"
+      "id": 99,
+      "name": "Documentary"
     },
     {
-      "id": "7",
-      "title": "Baki",
-      "description":"The protagonist, Baki Hanma, trains with an intense focus to become strong enough to surpass his father, Yujiro Hanma, the strongest fighter in the world. Five of the world's most violent and brutal death row inmates are gathering to face Baki.",
-      "poster": "https://my-video-five.vercel.app/image/Baki%20poster.jpg",
-      "video": "https://my-video-five.vercel.app/video/baki.mp4"
-      
+      "id": 18,
+      "name": "Drama"
     },
     {
-      "id": "8",
-      "title": "Hunter x Hunter",
-      "description": "The story focuses on a young boy named Gon Freecss who discovers that his father, who left him at a young age, is actually a world-renowned Hunter, a licensed professional who specializes in fantastical pursuits such as locating rare or unidentified animal species, treasure hunting, surveying unexplored enclaves, or ...",
-      "poster": "https://my-video-five.vercel.app/image/Hunter%20x%20hunter%20poster.webp",
-      "video": "https://my-video-five.vercel.app/video/Hunter%20X%20Hunter%20.mp4"
+      "id": 10751,
+      "name": "Family"
     },
     {
-      "id": "9",
-      "title": "Parastye",
-      "description": "Teenager Shinichi Izumi is a high-school student who lives in a quiet Tokyo neighborhood with his parents. His life changes when wormlike creatures, called Parasites, appear on Earth, bent on taking over the brains of human hosts by entering their ears or noses.",
-      "poster": "https://my-video-five.vercel.app/image/parasyte%20poster.jpg",
-      "video": "https://my-video-five.vercel.app/video/Parasyte.mp4"
+      "id": 14,
+      "name": "Fantasy"
     },
     {
-      "id": "10",
-      "title": "Vinland Saga",
-      "description": "Thorfinn pursues a journey with his father's killer in order to take revenge and end his life in a duel as an honorable warrior and pay his father a homage. A young man named Thorfinn finds himself in a quest for revenge against his father's killer.",
-      "poster":"https://my-video-five.vercel.app/image/vinland-saga%20poster.webp",
-      "video": "https://my-video-five.vercel.app/video/Vinland%20Saga%20.mp4"
+      "id": 36,
+      "name": "History"
     },
     {
-      "id": "11",
-      "title": "Seven deadly sins",
-      "description": "Most of the seven deadly sins are defined by Dante Alighieri (c. 1264–1321) as perverse or corrupt versions of love; lust, gluttony, and greed are all excessive or disordered love of good things; and wrath, envy, and pride are perverted love directed toward others' harm.",
-      "poster": "https://my-video-five.vercel.app/image/seven%20deadly%20sins%20poster%20.jpg",
-      "video": "https://my-video-five.vercel.app/video/Seven%20Deadly%20Sins.mp4"
+      "id": 27,
+      "name": "Horror"
     },
     {
-      "id": "12",
-      "title": "High rise invasion ",
-      "description": "High schooler Yuri finds herself atop a skyscraper in a strange world, where she must survive against masked assailants bent on killing their prey. High schooler Yuri finds herself atop a skyscraper in a strange world, where she must survive against masked assailants bent on killing their prey.",
-      "poster": "https://my-video-five.vercel.app/image/High%20Rise%20Invasion%20poster.webp",
-      "video":"https://my-video-five.vercel.app/video/High-Rise%20Invasion%20.mp4"
+      "id": 10402,
+      "name": "Music"
     },
     {
-      "id": "13",
-      "title": "Blue Exorcist",
-      "description": "After discovering that he's the son of Satan, a young man must join the True Cross Academy in order to master his abilities and defeat Satan himself. After discovering that he's the son of Satan, a young man must join the True Cross Academy in order to master his abilities and defeat Satan himself.",
-      "poster": "https://my-video-five.vercel.app/image/Blue%20Exorcist%20poster%20.jpg",
-      "video": "https://my-video-five.vercel.app/video/Blue%20Exorcist%20.mp4"
+      "id": 9648,
+      "name": "Mystery"
     },
     {
-      "id": "14",
-      "title": "Lookism",
-      "description": "Main. Daniel Park is a naïve high-school student who is bullied by Logan Lee. Before transferring to Jae Won High School to escape the bullying, he awakens with a slimmer, more-attractive body next to his chubby one. With his new body, he makes friends and learns about the world and himself from a new perspective.",
-      "poster": "https://my-video-five.vercel.app/image/lookism%20poster.jpeg",
-      "video": "https://my-video-five.vercel.app/video/Lookism%20.mp4"
+      "id": 10749,
+      "name": "Romance"
     },
     {
-      "id": "15",
-      "title": "Kengan Ashura",
-      "description": "Delinquent teen-agers ingest a substance and grow thirty feet tall, then proceed to take over a small town.",
-      "poster": "https://my-video-five.vercel.app/image/Kengan%20Ashura%20poster.jpeg",
-      "video": "https://my-video-five.vercel.app/video/Kengan%20Ashura%20.mp4"
+      "id": 878,
+      "name": "Science Fiction"
+    },
+    {
+      "id": 10770,
+      "name": "TV Movie"
+    },
+    {
+      "id": 53,
+      "name": "Thriller"
+    },
+    {
+      "id": 10752,
+      "name": "War"
+    },
+    {
+      "id": 37,
+      "name": "Western"
     }
   ]
+
+const main = document.getElementById('main');
+const form =  document.getElementById('form');
+const search = document.getElementById('search');
+const tagsEl = document.getElementById('tags');
+
+const prev = document.getElementById('prev')
+const next = document.getElementById('next')
+const current = document.getElementById('current')
+
+var currentPage = 1;
+var nextPage = 2;
+var prevPage = 3;
+var lastUrl = '';
+var totalPages = 100;
+
+var selectedGenre = []
+setGenre();
+function setGenre() {
+    tagsEl.innerHTML= '';
+    genres.forEach(genre => {
+        const t = document.createElement('div');
+        t.classList.add('tag');
+        t.id=genre.id;
+        t.innerText = genre.name;
+        t.addEventListener('click', () => {
+            if(selectedGenre.length == 0){
+                selectedGenre.push(genre.id);
+            }else{
+                if(selectedGenre.includes(genre.id)){
+                    selectedGenre.forEach((id, idx) => {
+                        if(id == genre.id){
+                            selectedGenre.splice(idx, 1);
+                        }
+                    })
+                }else{
+                    selectedGenre.push(genre.id);
+                }
+            }
+            console.log(selectedGenre)
+            getMovies(API_URL + '&with_genres='+encodeURI(selectedGenre.join(',')))
+            highlightSelection()
+        })
+        tagsEl.append(t);
+    })
 }
-    for(let i of anime){
-        console.log(i)
+
+function highlightSelection() {
+    const tags = document.querySelectorAll('.tag');
+    tags.forEach(tag => {
+        tag.classList.remove('highlight')
+    })
+    clearBtn()
+    if(selectedGenre.length !=0){   
+        selectedGenre.forEach(id => {
+            const hightlightedTag = document.getElementById(id);
+            hightlightedTag.classList.add('highlight');
+        })
     }
+
+}
+
+function clearBtn(){
+    let clearBtn = document.getElementById('clear');
+    if(clearBtn){
+        clearBtn.classList.add('highlight')
+    }else{
+            
+        let clear = document.createElement('div');
+        clear.classList.add('tag','highlight');
+        clear.id = 'clear';
+        clear.innerText = 'Clear x';
+        clear.addEventListener('click', () => {
+            selectedGenre = [];
+            setGenre();            
+            getMovies(API_URL);
+        })
+        tagsEl.append(clear);
+    }
+    
+}
+
+getMovies(API_URL);
+
+function getMovies(url) {
+  lastUrl = url;
+    fetch(url).then(res => res.json()).then(data => {
+        console.log(data.results)
+        if(data.results.length !== 0){
+            showMovies(data.results);
+            currentPage = data.page;
+            nextPage = currentPage + 1;
+            prevPage = currentPage - 1;
+            totalPages = data.total_pages;
+
+            current.innerText = currentPage;
+
+            if(currentPage <= 1){
+              prev.classList.add('disabled');
+              next.classList.remove('disabled')
+            }else if(currentPage>= totalPages){
+              prev.classList.remove('disabled');
+              next.classList.add('disabled')
+            }else{
+              prev.classList.remove('disabled');
+              next.classList.remove('disabled')
+            }
+
+            tagsEl.scrollIntoView({behavior : 'smooth'})
+
+        }else{
+            main.innerHTML= `<h1 class="no-results">No Results Found</h1>`
+        }
+       
+    })
+
+}
+
+
+function showMovies(data) {
+    main.innerHTML = '';
+
+    data.forEach(movie => {
+        const {title, poster_path, vote_average, overview, id} = movie;
+        const movieEl = document.createElement('div');
+        movieEl.classList.add('movie');
+        movieEl.innerHTML = `
+             <img src="${poster_path? IMG_URL+poster_path: "http://via.placeholder.com/1080x1580" }" alt="${title}">
+            <div class="movie-info">
+                <h3>${title}</h3>
+                <span class="${getColor(vote_average)}">${vote_average}</span>
+            </div>
+            <div class="overview">
+                <h3>Overview</h3>
+                ${overview}
+                <br/> 
+                <button class="know-more" id="${id}">Know More</button
+            </div>
+        
+        `
+
+        main.appendChild(movieEl);
+
+        document.getElementById(id).addEventListener('click', () => {
+          console.log(id)
+          openNav(movie)
+        })
+    })
+}
+
+const overlayContent = document.getElementById('overlay-content');
+/* Open when someone clicks on the span element */
+function openNav(movie) {
+  let id = movie.id;
+  fetch(BASE_URL + '/movie/'+id+'/videos?'+API_KEY).then(res => res.json()).then(videoData => {
+    console.log(videoData);
+    if(videoData){
+      document.getElementById("myNav").style.width = "100%";
+      if(videoData.results.length > 0){
+        var embed = [];
+        var dots = [];
+        videoData.results.forEach((video, idx) => {
+          let {name, key, site} = video
+
+          if(site == 'YouTube'){
+              
+            embed.push(`
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/${key}" title="${name}" class="embed hide" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          
+          `)
+
+            dots.push(`
+              <span class="dot">${idx + 1}</span>
+            `)
+          }
+        })
+        
+        var content = `
+        <h1 class="no-results">${movie.original_title}</h1>
+        <br/>
+        
+        ${embed.join('')}
+        <br/>
+        <div class="dots">${dots.join('')}</div>
+        
+        `
+        overlayContent.innerHTML = content;
+        activeSlide=0;
+        showVideos();
+      }else{
+        overlayContent.innerHTML = `<h1 class="no-results">No Results Found</h1>`
+      }
+    }
+  })
+}
+
+/* Close when someone clicks on the "x" symbol inside the overlay */
+function closeNav() {
+  document.getElementById("myNav").style.width = "0%";
+}
+
+var activeSlide = 0;
+var totalVideos = 0;
+
+function showVideos(){
+  let embedClasses = document.querySelectorAll('.embed');
+  let dots = document.querySelectorAll('.dot');
+
+  totalVideos = embedClasses.length; 
+  embedClasses.forEach((embedTag, idx) => {
+    if(activeSlide == idx){
+      embedTag.classList.add('show')
+      embedTag.classList.remove('hide')
+
+    }else{
+      embedTag.classList.add('hide');
+      embedTag.classList.remove('show')
+    }
+  })
+
+  dots.forEach((dot, indx) => {
+    if(activeSlide == indx){
+      dot.classList.add('active');
+    }else{
+      dot.classList.remove('active')
+    }
+  })
+}
+
+const leftArrow = document.getElementById('left-arrow')
+const rightArrow = document.getElementById('right-arrow')
+
+leftArrow.addEventListener('click', () => {
+  if(activeSlide > 0){
+    activeSlide--;
+  }else{
+    activeSlide = totalVideos -1;
+  }
+
+  showVideos()
+})
+
+rightArrow.addEventListener('click', () => {
+  if(activeSlide < (totalVideos -1)){
+    activeSlide++;
+  }else{
+    activeSlide = 0;
+  }
+  showVideos()
+})
+
+
+function getColor(vote) {
+    if(vote>= 8){
+        return 'green'
+    }else if(vote >= 5){
+        return "orange"
+    }else{
+        return 'red'
+    }
+}
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const searchTerm = search.value;
+    selectedGenre=[];
+    setGenre();
+    if(searchTerm) {
+        getMovies(searchURL+'&query='+searchTerm)
+    }else{
+        getMovies(API_URL);
+    }
+
+})
+
+prev.addEventListener('click', () => {
+  if(prevPage > 0){
+    pageCall(prevPage);
+  }
+})
+
+next.addEventListener('click', () => {
+  if(nextPage <= totalPages){
+    pageCall(nextPage);
+  }
+})
+
+function pageCall(page){
+  let urlSplit = lastUrl.split('?');
+  let queryParams = urlSplit[1].split('&');
+  let key = queryParams[queryParams.length -1].split('=');
+  if(key[0] != 'page'){
+    let url = lastUrl + '&page='+page
+    getMovies(url);
+  }else{
+    key[1] = page.toString();
+    let a = key.join('=');
+    queryParams[queryParams.length -1] = a;
+    let b = queryParams.join('&');
+    let url = urlSplit[0] +'?'+ b
+    getMovies(url);
+  }
+}
