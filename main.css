@@ -5,8 +5,8 @@
 }
 
 :root{
-    --primary-color:#22254b;
-    --secondary-color: #373b69;
+    --primary-color:brown;
+    --secondary-color: rgba(255, 166, 0, 0.247);
 }
 
 body{
@@ -21,6 +21,8 @@ header{
     display:flex;
     justify-content: flex-end;
     background-color: var(--secondary-color);
+    border-radius: 0%;
+    border: #7378c5;
 }
 
 .search{
@@ -273,4 +275,8 @@ main{
 
 .dots .dot.active{
     border-color: orange;
+}
+
+.logo{
+  image-rendering: auto;
 }
