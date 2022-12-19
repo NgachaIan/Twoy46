@@ -331,3 +331,10 @@ body {
     font-size: 1.5em;
     margin-bottom: 0.5em;
 }
+
+/* title */
+.title  {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;  
+}
