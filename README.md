@@ -16,10 +16,10 @@ Once the application is opened, you can use the following steps to navigate thro
 
 -To open the application click the the deploy link on your github account to open the application or on the documentation.
 
--The user will be shown a list of movie titles and their details which the user can interact with.
+-The user will be shown a list of movie titles and their details which the user can interact with posters.
 
 
-- The user can book for spaces and movies by clicking on the ```posters``` button to be redirected to the anime details page
+- The user can watch  movies by clicking on the ```posters``` button to be redirected to the movie details page
 
 
 
