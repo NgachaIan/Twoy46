@@ -280,3 +280,9 @@ main{
 .logo{
   image-rendering: auto;
 }
+
+/* Login */
+
+a .login{
+    text-decoration: none;
+}
