@@ -63,7 +63,7 @@ To use this repo on your machine requires some simple steps
 - Take on the process in ``Alternative One`` above.
 - Remember to replace your username when cloning.
 
-        git clone https://github.com/your-username-here/Twoy46
+        git clone https://github.com/CaseyOchieng/Twoy46
 
 
 # Running the application
